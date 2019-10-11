@@ -1,0 +1,127 @@
+#include "colors.inc"           
+#include "textures.inc"
+ 
+ background { color White }    
+ 
+ 
+ 
+  /**********************************************
+ ** Camera and lights                              
+ **********************************************/         
+ 
+#declare camdist = 2300;
+                                                   
+camera {   
+        perspective orthographic
+        location <0, 0, camdist>
+        look_at <0, 0, 0>
+}    
+
+
+light_source { <0, 0, 10000> color White}
+light_source { <-5000, 00, 10000> color White}   
+//light_source { <000, 00, 1.5*camdist> color White}                                                  
+//light_source { <-600, 00, -camdist> color White}
+//light_source { <600, 00, -camdist> color White}
+
+
+ /**********************************************
+ ** Macros for drawing atoms
+ **********************************************/  
+ 
+#declare RTiN = 135;       
+#declare Li_col = OldGold;
+#declare Co_col = MediumBlue;
+#declare Mn_col = SteelBlue;
+
+plane { <0,0,1>, -2 pigment {color Bronze}}
+
+ #macro putAtom_M_Li(X,Y,Z)
+ sphere{<X,Y,Z>,RTiN 
+ texture{
+   pigment{color Li_col     }
+          // transmit 0.65} 
+   finish { phong 0.7 }   
+  }}  
+#end   
+                
+ #macro putAtom_Li_Li(X,Y,Z)
+ sphere{<X,Y,Z>,RTiN 
+ texture{
+   pigment{color Li_col }
+           //transmit 0.65} 
+   finish { phong 0.7 } 
+  }}  
+#end   
+
+#macro putAtom_Mn1_Mn(X,Y,Z)
+ sphere{<X,Y,Z>,RTiN 
+ 
+ texture { 
+   pigment{color Mn_col} 
+   finish { phong 0.7 }
+  }} 
+#end
+     
+#macro putAtom_Mn2_Mn(X,Y,Z)
+ sphere{<X,Y,Z>,RTiN 
+ 
+ texture { 
+   pigment{color Mn_col} 
+   finish { phong 0.7 }
+  }} 
+#end
+     
+#macro putAtom_Co_Co(X,Y,Z)
+ sphere{<X,Y,Z>,RTiN 
+ texture { 
+   pigment{color Co_col} 
+   finish { phong 0.7 }
+  }}  
+#end 
+ 
+#macro putAtom_M_Co(X,Y,Z)
+ sphere{<X,Y,Z>,RTiN 
+ texture { 
+   pigment{color Co_col} 
+   finish { phong 0.7 }
+  }}  
+#end 
+ 
+#macro putAtom_Mn1_Co(X,Y,Z)
+ sphere{<X,Y,Z>,RTiN 
+ 
+ texture { 
+   pigment{color Co_col} 
+   finish { phong 0.7 }
+  }} 
+#end
+     
+#macro putAtom_Mn2_Co(X,Y,Z)
+ sphere{<X,Y,Z>,RTiN 
+ 
+ texture { 
+   pigment{color Mn_col} 
+   finish { phong 0.7 }
+  }} 
+#end    
+
+#macro putAtom_Ti2_Vac(X, Y, Z)   
+#end
+
+
+union {
+
+        #include "1phase_out.pov"   
+        
+        
+        // ad rotate and anim code here  
+        
+        translate <-1000, -1000, 0>
+       rotate <0, 0, 90> 
+        
+        
+        
+        rotate <0, 0, 90> 
+        
+}
