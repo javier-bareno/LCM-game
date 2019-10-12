@@ -6,14 +6,14 @@ In a nutshell, the problem was apparently contradictory experimental data. EXAFS
 
 First, a hexagonal supercell, size atoms wide is created. Then the supercell is filled by 25 atom big Co or Mn tiles, consistent with the bulk coordination of LiCoO2 and Li2MnO3. At each simulation step, a tile is placed in a random position within the supercell. The tile composition, Co or Mn, is selected with probability given by the intended overall model Co/Mn ratio; except when the tile touches an existing domain, in which case the domain is extended. This approach ignores energy of interaction between domains, therefore is purelly driven by enthropy.
 
-model step
+![model step](/img/figure__II_step_II.bmp)
 
 When the supercell is full, the game counts the number of disconnetced Co and Mn domains in the model, applying periodic boundary conditions. The idea is that two not connected Mn domains have only a 1/3 probability of having their Li columns alligned; if they are not, the HAADF projection averages out to look like Co.
 
-model step
+![model full](/img/figure__II_CoMn.bmp)
 
 By running the game repeatedly for different sizes and Co/Mn ratios, the percolation threshold can be estimated. \src\game.py contains the routines to run the game and count disconnect domains. \src\analysis.py contains code to analyze the model outputs and reformat the data for further plotting. The ```if __name__ == '__main__':``` section at the end of each file contains examples of how I run it for testing and experiemnting. Different runs are commented out. The outputs of those runs are stored under \old_runs. Feel free to explore and have fun!
 
-model step
+![model stats I](/img/Model_clusters_1col.tif)
 
-model step
+![model coordination](/img/Model_coordination_1col.tif)
